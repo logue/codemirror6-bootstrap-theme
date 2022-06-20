@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "codemirror6-bootstrap-theme",
+  "version": "0.0.1",
+  "description": "Bootstrap5 theme for CodeMirror6",
+  "author": {
+    "name": "Logue",
+    "email": "logue@hotmail.co.jp",
+    "url": "https://logue.dev/"
+  },
+  "homepage": "https://github.com/logue/codemirror6-bootstrap-theme",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:logue/codemirror6-bootstrap-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/logue/codemirror6-bootstrap-theme/issues"
+  },
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=16.15.1",
+    "yarn": ">=1.22.4"
+  },
+  "packageManager": "yarn@3.2.1",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint . --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint && prettier . -w -u",
+    "build": "vite build && tsc",
+    "build:analyze": "vite build --mode analyze",
+    "build:clean": "rimraf dist",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@codemirror/language": "6.0.0",
+    "@codemirror/state": "6.0.0",
+    "@codemirror/view": "6.0.0",
+    "@lezer/highlight": "1.0.0"
+  },
+  "devDependencies": {
+    "@codemirror/buildhelper": "^0.1.16",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "bootstrap": "^5.2.0-beta1",
+    "codemirror": "^6.0.0",
+    "css-convert-json": "^1.1.0",
+    "eslint": "^8.18.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsdoc": "^39.3.3",
+    "eslint-plugin-tsdoc": "^0.2.16",
+    "eslint-plugin-vue": "^9.1.1",
+    "fs": "^0.0.1-security",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.2",
+    "path": "^0.12.7",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-visualizer": "^5.6.0",
+    "typescript": "^4.7.4",
+    "vite": "2.9.12",
+    "vite-plugin-checker": "^0.4.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,json,md}": "eslint --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint",
+    "*": "prettier -w -u"
+  }
+}
