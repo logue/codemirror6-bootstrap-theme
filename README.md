@@ -8,6 +8,8 @@
 
 [Bootstrap5](https://getbootstrap.com/) Theme for [CodeMirror6](https://codemirror.net/).
 
+![image](https://user-images.githubusercontent.com/480173/174700631-d8379d46-ed33-4363-a8c4-e602ed8d9024.png)
+
 ## Usage
 
 ```js
