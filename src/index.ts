@@ -13,41 +13,61 @@ const style = toJSON(bootstrap).children;
 const root = style[':root'].attributes;
 // console.log(root);
 
-const blue = root['--bs-blue'];
+// Generic Bootstrap Colors
+const blue = root['--bs-blue']; // Equals to primary
 const indigo = root['--bs-indigo'];
 const purple = root['--bs-purple'];
 const pink = root['--bs-pink'];
-const red = root['--bs-red'];
+const red = root['--bs-red']; // Equals to danger
 const orange = root['--bs-orange'];
-const yellow = root['--bs-yellow'];
-const green = root['--bs-green']; // Brightened compared to original to increase contrast
+const yellow = root['--bs-yellow']; // Equals to warning
+const green = root['--bs-green']; // Equals to success
 const teal = root['--bs-teal'];
-const cyan = root['--bs-cyan'];
-const invalid = root['--bs-white'];
+const cyan = root['--bs-cyan']; // Equals to info
 const dark = root['--bs-dark'];
-// const light = root['--bs-light'];
+const light = root['--bs-light'];
 const white = root['--bs-white'];
 const black = root['--bs-black'];
 const gray = [
-  '--bs-white', // this line is dummy :P
-  '--bs-gray-100',
-  '--bs-gray-200',
+  '--bs-white',
+  '--bs-gray-100', // Equals to light
+  '--bs-gray-200', // assume original light1
   '--bs-gray-300',
   '--bs-gray-400',
   '--bs-gray-500',
-  '--bs-gray-600',
+  '--bs-gray-600', // Equals to secondary
   '--bs-gray-700',
-  '--bs-gray-800',
-  '--bs-gray-900',
+  '--bs-gray-800', // assume original light1
+  '--bs-gray-900', // Equals to dark
 ];
 
-// bootstrap
+/** Bootsrap Form Style */
+const form = style['.form-control'].attributes;
+/** Bootstrap Form Focused style */
+const formFocused = style['.form-control:focus'].attributes;
+delete formFocused.color;
+delete formFocused['background-color'];
+
+/** Editor  */
+const editor = form;
+delete editor.padding;
+delete editor.color;
+delete editor['background-color'];
+
+/** Input */
+const input = form;
+delete input.width;
+delete editor.color;
+delete editor['background-color'];
+input.display = 'inline';
+
+/** Bootstrap Theme */
 export const bootstrapTheme: Extension = EditorView.theme(
   {
     '&.cm-editor': {
-      ...style['.form-control'].attributes,
+      ...form,
       '&.cm-focused': {
-        ...style['.form-control:focus'].attributes,
+        ...formFocused,
       },
     },
     '.cm-scroller': {
@@ -56,68 +76,99 @@ export const bootstrapTheme: Extension = EditorView.theme(
     },
     '.cm-content': { caretColor: black },
     '.cm-selectionBackground': {
-      background: gray[3],
+      background: gray[4],
     },
     '.cm-focused .cm-selectionBackground': {
       background: dark,
     },
     '.cm-cursor, .cm-dropCursor': {
-      borderLeft: '1.2px solid ' + gray[9],
+      borderLeft: `1.2px solid ${gray[8]}`,
     },
     '.cm-activeLine': {
-      backgroundColor: gray[1],
+      color: black,
+      backgroundColor: light,
     },
     '.cm-specialChar': {
       color: red,
     },
     '.cm-gutters': {
-      backgroundColor: gray[1],
       color: gray[6],
-      borderRight: '1px solid ' + gray[3],
+      backgroundColor: gray[3],
+      borderRight: `1px solid ${gray[3]}`,
+      borderTopLeftRadius: root['--bs-border-radius'],
+      borderBottomLeftRadius: root['--bs-border-radius'],
     },
     '.cm-activeLineGutter': {
-      backgroundColor: gray[2],
+      backgroundColor: gray[4],
     },
     '.cm-panels': {
-      backgroundColor: gray[1],
+      backgroundColor: gray[3],
       color: black,
     },
     '.cm-panels-top': {
-      borderBottom: '1px solid ' + gray[3],
+      borderBottom: `1px solid ${gray[4]}`,
     },
     '.cm-panels-bottom': {
-      borderTop: '1px solid ' + gray[3],
+      borderTop: `1px solid ${gray[4]}`,
     },
     '.cm-placeholder': {
       color: gray[6],
     },
     '.cm-button': {
       ...style['.btn'].attributes,
+      ...style['.btn-sm, .btn-group-sm > .btn'].attributes,
       ...style['.btn-outline-secondary'].attributes,
       backgroundImage: 'none',
       '&:hover': {
         ...style['.btn:hover'].attributes,
       },
-    },
-    '.cm-textfield': {
-      ...style['.form-control'].attributes,
-      '&.cm-focused': {
-        ...style['.form-control:focus'].attributes,
+      '&:active': {
+        backgroundImage: 'none',
+        ...style[
+          '.btn-check:checked + .btn, .btn-check:active + .btn, .btn:active, .btn.active, .btn.show'
+        ].attributes,
       },
     },
-    'input[type="checkbox"]': {
+    '.cm-textfield': {
+      ...input,
+      ...style['.form-control-sm'].attributes,
+      '&:focus': {
+        ...formFocused,
+      },
+    },
+    '.cm-panel.cm-search input[type=checkbox]': {
       ...style['.form-check-input'].attributes,
+      ...style['.form-check-input[type=checkbox]'].attributes,
+      '&:active': {
+        ...style['.form-check-input:active'].attributes,
+      },
+      '&:checked': {
+        ...style['.form-check-input:checked'].attributes,
+        ...style['.form-check-input:checked[type=checkbox]'].attributes,
+      },
+      '&:focus': {
+        ...style['.form-check-input:focus'].attributes,
+      },
+    },
+    '.cm-panels-top .cm-panel': {
+      borderTopLeftRadius: root['--bs-border-radius'],
+      borderTopRightRadius: root['--bs-border-radius'],
+    },
+    '.cm-panels-bottom .cm-panel': {
+      borderBottomLeftRadius: root['--bs-border-radius'],
+      borderBottomRightRadius: root['--bs-border-radius'],
     },
   },
   { dark: false }
 );
 
+/** Bootstrap Theme Dark mode */
 export const bootstrapThemeDark: Extension = EditorView.theme(
   {
     '&.cm-editor': {
-      ...style['.form-control'].attributes,
+      ...form,
       '&.cm-focused': {
-        ...style['.form-control:focus'].attributes,
+        ...formFocused,
       },
     },
     '.cm-scroller': {
@@ -126,27 +177,30 @@ export const bootstrapThemeDark: Extension = EditorView.theme(
     },
     '.cm-content': { caretColor: white },
     '.cm-selectionBackground': {
-      background: gray[9],
+      background: dark,
     },
     '.cm-focused .cm-selectionBackground': {
       background: root['--bs-light'],
     },
     '.cm-cursor, .cm-dropCursor': {
-      borderLeft: '1.2px solid ' + gray[9],
+      borderLeft: `1.2px solid ${gray[8]}`,
     },
     '.cm-cursor': {
       borderLeftColor: gray[7],
     },
     '.cm-activeLine': {
-      backgroundColor: gray[9],
+      color: white,
+      backgroundColor: gray[6],
     },
     '.cm-specialChar': { color: red },
     '.cm-gutters': {
-      backgroundColor: gray[8],
+      backgroundColor: gray[7],
       color: gray[4],
+      borderTopLeftRadius: root['--bs-border-radius'],
+      borderBottomLeftRadius: root['--bs-border-radius'],
     },
     '.cm-activeLineGutter': {
-      backgroundColor: gray[9],
+      backgroundColor: dark,
     },
     '.cm-panels': {
       backgroundColor: gray[8],
@@ -157,27 +211,53 @@ export const bootstrapThemeDark: Extension = EditorView.theme(
     },
     '.cm-button': {
       ...style['.btn'].attributes,
+      ...style['.btn-sm, .btn-group-sm > .btn'].attributes,
       ...style['.btn-secondary'].attributes,
       backgroundImage: 'none',
       '&:hover': {
         ...style['.btn:hover'].attributes,
       },
-    },
-    '.cm-textfield': {
-      ...style['.form-control'].attributes,
-
-      '&.cm-focused': {
-        ...style['.form-control:focus'].attributes,
+      '&:active': {
+        backgroundImage: 'none',
+        ...style[
+          '.btn-check:checked + .btn, .btn-check:active + .btn, .btn:active, .btn.active, .btn.show'
+        ].attributes,
       },
     },
-    'input[type="checkbox"]': {
+    '.cm-textfield': {
+      ...input,
+      ...style['.form-control-sm'].attributes,
+      '&:focus': {
+        ...formFocused,
+      },
+    },
+    '.cm-panel.cm-search input[type=checkbox]': {
       ...style['.form-check-input'].attributes,
+      ...style['.form-check-input[type=checkbox]'].attributes,
+      '&:active': {
+        ...style['.form-check-input:active'].attributes,
+      },
+      '&:checked': {
+        ...style['.form-check-input:checked'].attributes,
+        ...style['.form-check-input:checked[type=checkbox]'].attributes,
+      },
+      '&:focus': {
+        ...style['.form-check-input:focus'].attributes,
+      },
+    },
+    '.cm-panels-top .cm-panel': {
+      borderTopLeftRadius: root['--bs-border-radius'],
+      borderTopRightRadius: root['--bs-border-radius'],
+    },
+    '.cm-panels-bottom .cm-panel': {
+      borderBottomLeftRadius: root['--bs-border-radius'],
+      borderBottomRightRadius: root['--bs-border-radius'],
     },
   },
   { dark: true }
 );
 
-// / The highlighting style for code in the One Dark theme.
+/** Bootstrap Hilighting Text Style */
 export const bootstrapHighlightStyle = HighlightStyle.define([
   { tag: t.keyword, color: purple },
   {
@@ -220,7 +300,7 @@ export const bootstrapHighlightStyle = HighlightStyle.define([
   { tag: t.heading, fontWeight: 'bold', color: pink },
   { tag: [t.atom, t.bool, t.special(t.variableName)], color: orange },
   { tag: [t.processingInstruction, t.string, t.inserted], color: teal },
-  { tag: t.invalid, color: invalid },
+  { tag: t.invalid, color: red },
 ]);
 
 export const Bootstrap: Extension = [

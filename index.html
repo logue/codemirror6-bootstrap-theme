@@ -10,14 +10,17 @@
     <title>Bootstrap Theme</title>
   </head>
 
-  <body>
+  <body class="bg-light">
     <div class="container py-3">
-      <div id="app">placeholder</div>
+      <div id="demo1" class="text-black bg-white p-3 mb-3">Default:</div>
+      <div id="demo2" class="text-white bg-black p-3">
+        Darkmode (Experimental):
+      </div>
       <script type="module" src="/src/index.ts"></script>
       <script type="module">
         import 'bootstrap/dist/css/bootstrap.css';
         import { basicSetup, EditorView } from 'codemirror';
-        import { Bootstrap } from './src/index';
+        import { Bootstrap, BootstrapDark } from './src/index';
         console.log(Bootstrap);
 
         new EditorView({
@@ -26,7 +29,16 @@
 有為の奥山　今日越えて
 浅き夢見じ　酔ひもせず`,
           extensions: [basicSetup, Bootstrap],
-          parent: document.getElementById('app'),
+          parent: document.getElementById('demo1'),
+        });
+
+        new EditorView({
+          doc: `色は匂へど　散りぬるを
+我が世誰ぞ　常ならむ
+有為の奥山　今日越えて
+浅き夢見じ　酔ひもせず`,
+          extensions: [basicSetup, BootstrapDark],
+          parent: document.getElementById('demo2'),
         });
       </script>
     </div>
