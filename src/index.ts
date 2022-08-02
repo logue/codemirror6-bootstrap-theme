@@ -1,17 +1,15 @@
 import { EditorView } from '@codemirror/view';
-import { Extension } from '@codemirror/state';
+import type { Extension } from '@codemirror/state';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { tags as t } from '@lezer/highlight';
-
 import { toJSON } from 'css-convert-json';
-import bootstrap from 'bootstrap/dist/css/bootstrap.css?raw';
+import bootstrap from 'bootstrap/dist/css/bootstrap.min.css?raw';
 
 /** Bootstrap theme */
 const style = toJSON(bootstrap).children;
 
 /** Root theme */
 const root = style[':root'].attributes;
-// console.log(root);
 
 // Generic Bootstrap Colors
 const blue = root['--bs-blue']; // Equals to primary
@@ -62,7 +60,7 @@ delete editor['background-color'];
 input.display = 'inline';
 
 /** Bootstrap Theme */
-export const bootstrapTheme: Extension = EditorView.theme(
+const bootstrapTheme: Extension = EditorView.theme(
   {
     '&.cm-editor': {
       ...form,
@@ -163,7 +161,7 @@ export const bootstrapTheme: Extension = EditorView.theme(
 );
 
 /** Bootstrap Theme Dark mode */
-export const bootstrapThemeDark: Extension = EditorView.theme(
+const bootstrapThemeDark: Extension = EditorView.theme(
   {
     '&.cm-editor': {
       ...form,
@@ -258,7 +256,7 @@ export const bootstrapThemeDark: Extension = EditorView.theme(
 );
 
 /** Bootstrap Hilighting Text Style */
-export const bootstrapHighlightStyle = HighlightStyle.define([
+const bootstrapHighlightStyle = HighlightStyle.define([
   { tag: t.keyword, color: purple },
   {
     tag: [t.name, t.deleted, t.character, t.propertyName, t.macroName],

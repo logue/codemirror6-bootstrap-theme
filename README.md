@@ -28,15 +28,9 @@ new EditorView({
 
 ## API Reference
 
-@Bootstrap
-
-@BootstrapDark
-
 @BootstrapTheme
 
 @BootstrapDarkTheme
-
-@BootstrapHighlightStyle
 
 ## LICENSE
 
