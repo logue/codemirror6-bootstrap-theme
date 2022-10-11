@@ -1,7 +1,7 @@
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, type UserConfig } from 'vite';
 import checker from 'vite-plugin-checker';
-import path, { join } from 'path';
+import path, { join } from 'node:path';
 
 // https://vitejs.dev/config/
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
@@ -38,9 +38,11 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       lib: {
         entry: path.resolve(__dirname, 'src/index.ts'),
         name: 'InertiaComposable',
+        formats: ['es', 'umd'],
         fileName: format => `index.${format}.js`,
       },
       rollupOptions: {
+        // @ts-ignore
         plugins: [
           mode === 'analyze'
             ? // rollup-plugin-visualizer
@@ -52,7 +54,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
                 brotliSize: true,
               })
             : undefined,
-        ],
+        ].filter(item => item !== undefined),
         external: [
           'bootstrap/dist/css/bootstrap.css',
           'bootstrap/dist/css/bootstrap.css?raw',
@@ -73,7 +75,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           },
         },
       },
-      target: 'es2021',
+      target: 'es2022',
       /*
       // Minify option
       // https://vitejs.dev/config/#build-minify

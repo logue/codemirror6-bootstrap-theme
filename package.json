@@ -3,6 +3,8 @@
   "name": "codemirror6-bootstrap-theme",
   "version": "0.0.2",
   "description": "Bootstrap5 theme for CodeMirror6",
+  "license": "MIT",
+  "type": "module",
   "author": {
     "name": "Logue",
     "email": "logue@hotmail.co.jp",
@@ -16,25 +18,25 @@
   "bugs": {
     "url": "https://github.com/logue/codemirror6-bootstrap-theme/issues"
   },
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
     }
   },
-  "types": "./dist/index.d.ts",
   "engines": {
-    "node": ">=16.15.1",
-    "yarn": ">=1.22.4"
+    "node": ">=16.17.1",
+    "yarn": ">=1.22.10"
   },
-  "packageManager": "yarn@3.2.1",
-  "license": "MIT",
+  "packageManager": "yarn@3.2.3",
   "scripts": {
     "dev": "vite",
+    "clean": "rimraf ./node_modules/.vite",
     "lint": "eslint . --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint && prettier . -w -u",
-    "build": "vite build && tsc",
+    "build": "vite build && tsc --declaration --emitDeclarationOnly",
     "build:analyze": "vite build --mode analyze",
     "build:clean": "rimraf dist",
     "test": "cm-runtests",
@@ -43,38 +45,37 @@
   },
   "dependencies": {
     "@codemirror/language": "^6.2.1",
-    "@codemirror/state": "^6.1.0",
-    "@codemirror/view": "6.0.0",
-    "@lezer/highlight": "^1.0.0"
+    "@codemirror/state": "^6.1.2",
+    "@codemirror/view": "6.3.1",
+    "@lezer/highlight": "^1.1.1",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@codemirror/buildhelper": "^0.1.16",
-    "@types/node": "^18.6.3",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
-    "@typescript-eslint/parser": "^5.32.0",
-    "bootstrap": "^5.2.0",
+    "@types/lodash": "^4.14.186",
+    "@types/node": "^18.8.4",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "bootstrap": "^5.2.2",
     "codemirror": "^6.0.1",
     "css-convert-json": "^1.1.0",
-    "eslint": "^8.21.0",
+    "eslint": "^8.25.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-typescript": "^3.4.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsdoc": "^39.3.4",
-    "eslint-plugin-tsdoc": "^0.2.16",
-    "eslint-plugin-vue": "^9.3.0",
-    "fs": "^0.0.1-security",
+    "eslint-plugin-jsdoc": "^39.3.6",
+    "eslint-plugin-tsdoc": "^0.2.17",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "path": "^0.12.7",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "rollup-plugin-visualizer": "^5.7.1",
-    "typescript": "^4.7.4",
-    "vite": "3.0.4",
-    "vite-plugin-checker": "^0.4.9"
+    "rollup-plugin-visualizer": "^5.8.2",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.7",
+    "vite-plugin-checker": "^0.5.1"
   },
   "husky": {
     "hooks": {
@@ -86,7 +87,7 @@
     "*": "prettier -w -u"
   },
   "resolutions": {
-    "@codemirror/state": "^6.1.0",
+    "@codemirror/view": "6.3.1",
     "prettier": "^2.7.1"
   }
 }

@@ -19,14 +19,14 @@
       </div>
       <script type="module">
         import { basicSetup, EditorView } from 'codemirror';
-        import { Bootstrap, BootstrapDark } from './src/index';
+        import { bootstrap, bootstrapDark } from './src/index';
 
         new EditorView({
           doc: `色は匂へど　散りぬるを
 我が世誰ぞ　常ならむ
 有為の奥山　今日越えて
 浅き夢見じ　酔ひもせず`,
-          extensions: [basicSetup, Bootstrap],
+          extensions: [basicSetup, bootstrap],
           parent: document.getElementById('demo1'),
         });
 
@@ -35,7 +35,7 @@
 我が世誰ぞ　常ならむ
 有為の奥山　今日越えて
 浅き夢見じ　酔ひもせず`,
-          extensions: [basicSetup, BootstrapDark],
+          extensions: [basicSetup, bootstrapDark],
           parent: document.getElementById('demo2'),
         });
       </script>
