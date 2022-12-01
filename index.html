@@ -21,7 +21,7 @@
         import { basicSetup, EditorView } from 'codemirror';
         import { bootstrap, bootstrapDark } from './src/index';
 
-        new EditorView({
+        let myView = new EditorView({
           doc: `色は匂へど　散りぬるを
 我が世誰ぞ　常ならむ
 有為の奥山　今日越えて
@@ -29,7 +29,6 @@
           extensions: [basicSetup, bootstrap],
           parent: document.getElementById('demo1'),
         });
-
         new EditorView({
           doc: `色は匂へど　散りぬるを
 我が世誰ぞ　常ならむ

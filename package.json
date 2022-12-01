@@ -29,9 +29,9 @@
   },
   "engines": {
     "node": ">=16.17.1",
-    "yarn": ">=1.22.10"
+    "yarn": ">=1.22.19"
   },
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "yarn@3.3.0",
   "scripts": {
     "dev": "vite",
     "clean": "rimraf ./node_modules/.vite",
@@ -44,37 +44,34 @@
     "prepare": "husky install & cm-buildhelper src/index.ts"
   },
   "dependencies": {
-    "@codemirror/language": "^6.2.1",
-    "@codemirror/state": "^6.1.2",
-    "@codemirror/view": "6.3.1",
-    "@lezer/highlight": "^1.1.1",
+    "@codemirror/view": "6.5.1",
+    "bootstrap": "^5.2.3",
+    "codemirror": "^6.0.1",
+    "css-convert-json": "^1.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@codemirror/buildhelper": "^0.1.16",
-    "@types/lodash": "^4.14.186",
-    "@types/node": "^18.8.4",
-    "@typescript-eslint/eslint-plugin": "^5.40.0",
-    "@typescript-eslint/parser": "^5.40.0",
-    "bootstrap": "^5.2.2",
-    "codemirror": "^6.0.1",
-    "css-convert-json": "^1.1.0",
-    "eslint": "^8.25.0",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsdoc": "^39.3.6",
+    "eslint-plugin-jsdoc": "^39.6.4",
     "eslint-plugin-tsdoc": "^0.2.17",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.4",
+    "prettier": "^2.8.0",
     "rimraf": "^3.0.2",
-    "rollup-plugin-visualizer": "^5.8.2",
-    "typescript": "^4.8.4",
-    "vite": "^3.1.7",
+    "rollup-plugin-visualizer": "^5.8.3",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4",
     "vite-plugin-checker": "^0.5.1"
   },
   "husky": {
@@ -87,7 +84,6 @@
     "*": "prettier -w -u"
   },
   "resolutions": {
-    "@codemirror/view": "6.3.1",
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.0"
   }
 }

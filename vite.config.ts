@@ -32,6 +32,10 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         },
       }),
     ],
+    optimizeDeps: {
+      // https://github.com/codemirror/dev/issues/608
+      exclude: ['@codemirror/state'],
+    },
     // Build Options
     // https://vitejs.dev/config/#build-options
     build: {
