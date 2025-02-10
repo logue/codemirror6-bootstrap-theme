@@ -5,6 +5,7 @@
 [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/codemirror6-bootstrap-theme/file/README.md)
 [![npm version](https://img.shields.io/npm/v/codemirror6-bootstrap-theme.svg)](https://www.npmjs.com/package/codemirror6-bootstrap-theme)
 [![Open in Gitpod](https://shields.io/badge/Open%20in-Gitpod-green?logo=Gitpod)](https://gitpod.io/#https://github.com/logue/codemirror6-bootstrap-theme)
+[![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-blue?style=flat-square&logo=codeanywhere)](https://app.codeanywhere.com/#https://github.com/logue/codemirror6-bootstrap-theme)
 
 [Bootstrap5](https://getbootstrap.com/) Theme for [CodeMirror6](https://codemirror.net/).
 
